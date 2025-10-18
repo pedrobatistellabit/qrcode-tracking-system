@@ -16,7 +16,7 @@ services:
       - DB_PASSWORD=postgres123
       - SECRET_KEY=dev-secret-key
       - API_KEY=admin-api-key
-      - BASE_URL=http://localhost:5001
+      - BASE_URL=http://72.60.8.131:5001
       - DEBUG=True
     volumes:
       - ./backend:/app
@@ -40,21 +40,6 @@ services:
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     ports:
       - "5432:5432"
-    restart: unless-stopped
-    networks:
-      - qrcode-network
-
-  # Nginx (opcional - para servir frontend)
-  nginx:
-    image: nginx:alpine
-    container_name: qrcode-tracking-nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - backend
     restart: unless-stopped
     networks:
       - qrcode-network
