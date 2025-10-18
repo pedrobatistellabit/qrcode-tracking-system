@@ -6,7 +6,7 @@ services:
     build: ./backend
     container_name: qrcode-tracking-backend
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - DATABASE_TYPE=postgresql
       - DB_HOST=postgres
@@ -16,7 +16,7 @@ services:
       - DB_PASSWORD=postgres123
       - SECRET_KEY=dev-secret-key
       - API_KEY=admin-api-key
-      - BASE_URL=http://localhost:5000
+      - BASE_URL=http://localhost:5001
       - DEBUG=True
     volumes:
       - ./backend:/app
