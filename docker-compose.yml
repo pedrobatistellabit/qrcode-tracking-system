@@ -19,7 +19,6 @@ services:
       - BASE_URL=http://72.60.8.131:5001
       - DEBUG=True
     volumes:
-      - ./backend:/app
       - qrcode-data:/app/data
     depends_on:
       - postgres
